@@ -32,7 +32,9 @@ logs/
 *.log
 
 # Streamlit local config
+# Keep repo config to avoid Streamlit Cloud issues (watcher settings, theme, etc)
 .streamlit/
+!.streamlit/config.toml
 
 # Large data / artifacts (don’t push)
 data/raw/
