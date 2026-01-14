@@ -1,0 +1,72 @@
+# Configuration for Multimodal Market Intelligence System
+
+# Data Configuration
+data:
+  commodity: "ONION"
+  location: "HYDERABAD"  # Can be changed to any location (e.g., "MUMBAI", "DELHI", "PUNE")
+  location_for_weather: "Hyderabad,IN"  # Format for weather API: "City,CountryCode"
+  lookback_window: 5  # Reduced to 5 to maximize sequences from limited data
+  train_split: 0.8  # Use more for training with small dataset
+  val_split: 0.1
+  test_split: 0.1
+  
+# Model Configuration (Optimized for Small Datasets)
+model:
+  # Encoder type: "lstm", "gru", or "transformer"
+  encoder_type: "gru"  # Options: "lstm", "gru", "transformer"
+  
+  price_encoder:
+    hidden_size: 32  # Reduced from 64 for smaller dataset
+    num_layers: 1  # Reduced from 2 to prevent overfitting
+    dropout: 0.3  # Increased dropout for regularization
+    
+  sentiment_encoder:
+    hidden_size: 32  # Reduced from 64
+    num_layers: 1  # Reduced from 2
+    dropout: 0.3  # Increased dropout
+    
+  external_encoder:
+    hidden_size: 16  # Reduced from 32
+    num_layers: 1
+    dropout: 0.2
+  
+  # Transformer-specific settings (if encoder_type is "transformer")
+  transformer:
+    d_model: 64  # Model dimension
+    nhead: 4  # Number of attention heads
+    num_layers: 2  # Number of transformer layers
+    dim_feedforward: 256  # Feedforward dimension
+    dropout: 0.1
+    
+  attention:
+    hidden_size: 64  # Reduced from 128
+    num_heads: 2  # Reduced from 4
+    
+  prediction_head:
+    hidden_sizes: [64, 32]  # Reduced from [128, 64]
+    dropout: 0.4  # Increased dropout
+    output_size: 2  # Binary classification (up/down)
+    
+# Training Configuration (Optimized for Small Datasets)
+training:
+  batch_size: 8  # Reduced from 32 (smaller batches for small dataset)
+  epochs: 50  # Reduced from 100 (less overfitting risk)
+  learning_rate: 0.0005  # Reduced learning rate for stability
+  weight_decay: 0.001  # Increased regularization
+  early_stopping_patience: 5  # More aggressive early stopping
+  device: "cuda"  # or "cpu"
+  
+# Data Collection
+collection:
+  price_source: "yfinance"  # or "manual"
+  news_source: "newsapi"  # or "manual"
+  weather_source: "openweathermap"  # or "manual"
+  
+# Paths
+paths:
+  data_dir: "data"
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  models_dir: "data/models"
+  figures_dir: "data/figures"
+
