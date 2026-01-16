@@ -1,292 +1,172 @@
-# 📊 Multimodal Market Intelligence System
+# 📊 Multimodal Market Intelligence System  
+### Short-Term Commodity Price Forecasting using Multimodal Deep Learning
 
-**Short-Term Commodity Price Forecasting with Interpretable Multimodal Deep Learning**
+🔗 **Live Demo**  
+https://23241a6749-ai-in-market-trend-analysis-app-1ystbp.streamlit.app/
 
-## 📚 Complete Documentation
+🔗 **GitHub Repository**  
+https://github.com/23241a6749/AI-IN-MARKET-TREND-ANALYSIS
 
-- **[PROJECT_COMPLETION_REPORT.md](PROJECT_COMPLETION_REPORT.md)** - Complete project overview and status
-- **[TECHNICAL_DOCUMENTATION.md](TECHNICAL_DOCUMENTATION.md)** - Detailed technical reference
-- **[CHALLENGES_AND_SOLUTIONS.md](CHALLENGES_AND_SOLUTIONS.md)** - All challenges faced and solutions
-- **[COMPLETE_PROJECT_DOCUMENTATION.md](COMPLETE_PROJECT_DOCUMENTATION.md)** - Comprehensive documentation
+---
 
-## ✅ Project Status: COMPLETE
+## 📌 Project Overview
 
-**All components implemented, tested, and production-ready!**
+This project presents an end-to-end Multimodal Market Intelligence System designed to predict short-term agricultural commodity price movement (Up/Down) by jointly modeling multiple real-world data sources such as historical prices, news sentiment, and weather conditions. The system uses a multimodal deep learning architecture with attention-based fusion, allowing it to dynamically learn the importance of each data source while also providing interpretable predictions. The trained models are deployed as an interactive Streamlit web application.
 
-## Project Overview
+---
 
-This project develops an end-to-end Multimodal Market Intelligence System that predicts short-term price movements of agricultural commodities (configurable location, default: Nashik, India) by jointly modeling:
+## ✅ Project Status
 
-- **Historical price dynamics** (time-series patterns)
-- **News sentiment** (market-moving information)
-- **Weather conditions** (supply-side shocks)
+✔ Core system implemented  
+✔ Models trained and evaluated  
+✔ Interpretability analysis completed  
+✔ Streamlit application deployed  
+✔ Ready for academic submission and demonstration  
 
-The system uses a three-stream deep learning architecture with attention-based multimodal fusion, enabling dynamic learning of signal importance and providing interpretable predictions.
+---
 
-## Features
+## 🧠 Key Features
 
-- 🧠 **Flexible Deep Learning**: Choose between LSTM, GRU, or Transformer encoders with attention-based fusion
-- 📍 **Configurable Location**: Change location from Nashik to any city/region
-- 📈 **Price Forecasting**: Next-day price direction prediction (extendable to regression)
-- 📰 **News Sentiment Analysis**: Automated sentiment extraction from market news
-- 🌦️ **Weather Integration**: External contextual signals for supply-side analysis
-- 🔍 **Interpretability**: Attention visualizations and ablation studies
-- 🎨 **Interactive Dashboard**: Streamlit web application for exploration
-- 📊 **Comprehensive Evaluation**: Multiple baselines and metrics
-- ✅ **Data Validation**: Automatic data quality checks and cleaning
-- 📝 **Comprehensive Logging**: Detailed logging system with file and console output
-- 🔌 **API Integration**: Support for real data APIs (OpenWeatherMap, NewsAPI)
-- 🎯 **Enhanced Architecture**: Batch normalization and improved weight initialization
+- Price Movement Prediction: Next-day price direction (Up/Down)  
+- Multimodal Deep Learning: Price, news sentiment, and weather signals  
+- Attention-Based Fusion: Learns modality importance dynamically  
+- Baseline Comparisons: Price-only and naive multimodal models  
+- Evaluation Metrics: Accuracy, Precision, Recall, F1-score, Confusion Matrix  
+- Interpretability: Attention weight visualization and ablation studies  
+- Interactive Dashboard: Streamlit-based user interface  
+- Cloud Deployment: Streamlit Community Cloud  
 
-## Project Structure
+---
 
-```
-.
+## 🏗️ Project Structure
+
+AI-IN-MARKET-TREND-ANALYSIS/
+│
+├── app.py                     # Streamlit application (production-ready)
+├── requirements.txt           # Python dependencies
+├── config/
+│   └── config.yaml            # Model and data configuration
+│
 ├── src/
 │   ├── data/
-│   │   ├── __init__.py
-│   │   ├── collectors.py      # Data collection (price, news, weather)
-│   │   ├── preprocessor.py    # Data cleaning and alignment
+│   │   ├── collectors.py      # Price, news, weather collection
+│   │   ├── preprocessor.py    # Data alignment & sequence creation
 │   │   └── feature_engineering.py
+│   │
 │   ├── models/
-│   │   ├── __init__.py
-│   │   ├── multimodal_model.py # Main multimodal architecture
+│   │   ├── multimodal_model.py # Attention-based multimodal model
 │   │   ├── baselines.py        # Baseline models
-│   │   └── attention.py        # Attention mechanisms
+│   │   └── attention.py
+│   │
 │   ├── training/
-│   │   ├── __init__.py
 │   │   ├── trainer.py          # Training pipeline
-│   │   └── evaluator.py        # Evaluation metrics
+│   │   └── evaluator.py        # Evaluation logic
+│   │
 │   ├── interpretability/
-│   │   ├── __init__.py
-│   │   ├── attention_viz.py    # Attention visualizations
+│   │   ├── attention_viz.py    # Attention visualization
 │   │   └── ablation.py         # Ablation studies
+│   │
 │   └── utils/
-│       ├── __init__.py
 │       └── helpers.py
+│
 ├── data/
-│   ├── raw/                    # Raw collected data
-│   ├── processed/              # Processed datasets
-│   └── models/                 # Saved model checkpoints
-├── notebooks/                  # Jupyter notebooks for exploration
-├── dashboard/
-│   └── app.py                  # Streamlit dashboard
-├── config/
-│   └── config.yaml             # Configuration file
-├── requirements.txt
+│   ├── raw/                   # Raw collected data
+│   ├── processed/             # Processed datasets
+│   └── models/                # Trained model checkpoints (.pt)
+│
 └── README.md
-```
 
-## Installation
+---
 
-1. **Clone the repository** (or navigate to project directory)
+## 🔄 System Workflow
 
-2. **Create a virtual environment**:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+1. Data Collection  
+   - Commodity price data  
+   - News sentiment scores  
+   - Weather parameters (temperature, humidity, rainfall)  
 
-3. **Install dependencies**:
-```bash
-pip install -r requirements.txt
-```
+2. Data Preprocessing  
+   - Date-wise alignment  
+   - Missing value handling  
+   - Feature normalization  
 
-4. **Set up environment variables** (optional, for real data APIs):
-```bash
-# Create .env file in project root
-WEATHER_API_KEY=your_openweathermap_api_key
-NEWS_API_KEY=your_newsapi_key
-```
+3. Sequence Generation  
+   - Sliding window time-series sequences  
 
-   Get API keys:
-   - Weather: https://openweathermap.org/api (free tier available)
-   - News: https://newsapi.org/ (free tier available)
-   
-   **📖 See [API_SETUP_GUIDE.md](API_SETUP_GUIDE.md) for detailed setup instructions**
+4. Model Training  
+   - Multimodal attention-based model  
+   - Baseline models for comparison  
 
-## Quick Start
+5. Evaluation & Interpretability  
+   - Performance metrics  
+   - Attention visualization  
+   - Ablation analysis  
 
-### Option 1: Run Complete Pipeline
+6. Deployment  
+   - Interactive Streamlit dashboard  
 
-Execute the full pipeline (data collection, training, evaluation):
+---
 
-```bash
-python main.py
-```
+## 🧠 Model Architecture
 
-This will:
-- Collect price, news, and weather data
-- Preprocess and engineer features
-- Train multimodal model and baselines
-- Evaluate and compare models
-- Generate interpretability visualizations
-- Run ablation studies
+The system uses a three-stream neural network architecture:
 
-### Option 2: Interactive Dashboard
+- Price Encoder: Processes historical price sequences  
+- Sentiment Encoder: Processes news sentiment features  
+- Weather Encoder: Processes weather signals  
+- Attention Fusion Layer: Dynamically weights each modality  
+- Prediction Head: Binary classification (Up / Down)  
 
-Launch the Streamlit dashboard for interactive exploration:
+This architecture improves both prediction accuracy and model interpretability.
 
-```bash
-streamlit run dashboard/app.py
-```
+---
 
-Or use the production-ready app:
+## 📊 Evaluation & Results
 
-```bash
-streamlit run app.py
-```
+The proposed model was evaluated against baseline approaches including a price-only model and a naive multimodal model without attention. Standard classification metrics such as accuracy, precision, recall, F1-score, and confusion matrices were used for evaluation.
 
-The dashboard provides:
-- Data visualization and exploration
-- Interactive model training
-- Real-time predictions
-- Attention weight visualizations
-- Model comparison tools
+Key observations:
+- The multimodal attention-based model outperformed baseline models  
+- Weather data had the strongest influence on prediction accuracy  
+- Attention weights provided meaningful explanations of model behavior  
 
-## 🚀 Deployment
+---
 
-### Streamlit Cloud Deployment
+## 🚀 Running the Project Locally
 
-The app is ready for deployment on Streamlit Cloud! See **[DEPLOYMENT.md](DEPLOYMENT.md)** for detailed instructions.
+git clone https://github.com/23241a6749/AI-IN-MARKET-TREND-ANALYSIS.git  
+cd AI-IN-MARKET-TREND-ANALYSIS  
+pip install -r requirements.txt  
+streamlit run app.py  
 
-**Quick deployment steps:**
+The application will be available at http://localhost:8501.
 
-1. **Push to GitHub:**
-   ```bash
-   git add .
-   git commit -m "Ready for deployment"
-   git push origin main
-   ```
+---
 
-2. **Deploy on Streamlit Cloud:**
-   - Go to [streamlit.io/cloud](https://streamlit.io/cloud)
-   - Connect your GitHub repository
-   - Set main file to `app.py`
-   - Click "Deploy"
+## 🌐 Deployment
 
-3. **Add API keys (optional):**
-   - In Streamlit Cloud settings, add secrets:
-     ```
-     NEWS_API_KEY=your_key
-     WEATHER_API_KEY=your_key
-     ```
+The project is deployed using Streamlit Community Cloud.
 
-Your app will be live at `https://your-app-name.streamlit.app`!
+Live Application:  
+https://23241a6749-ai-in-market-trend-analysis-app-1ystbp.streamlit.app/
 
-### Local Deployment
+---
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+## 🧪 AI Usage Disclosure
 
-# Run the app
-streamlit run app.py
-```
+AI tools (ChatGPT) were used during development for debugging support, concept clarification, and documentation assistance. All model design, implementation, training, evaluation, and deployment were performed and verified by the author.
 
-The app will be available at `http://localhost:8501`
+---
 
-## Usage
+## 📈 Future Improvements
 
-### 1. Data Collection
+- Extend to regression-based price forecasting  
+- Support multi-day prediction horizons  
+- Incorporate additional external data sources  
+- Improve scalability and real-time data ingestion  
 
-```python
-from src.data.collectors import PriceCollector, NewsCollector, WeatherCollector
+---
 
-# Collect price data
-price_collector = PriceCollector()
-price_data = price_collector.collect("ONION", "NASHIK", start_date="2020-01-01")
+## 👤 Author
 
-# Collect news data
-news_collector = NewsCollector()
-news_data = news_collector.collect("onion prices", start_date="2020-01-01")
-
-# Collect weather data
-weather_collector = WeatherCollector()
-weather_data = weather_collector.collect("Nashik", start_date="2020-01-01")
-```
-
-### 2. Training the Model
-
-```python
-from src.training.trainer import MultimodalTrainer
-from torch.utils.data import DataLoader
-
-# Create trainer
-trainer = MultimodalTrainer(config_path="config/config.yaml")
-
-# Create model
-trainer.create_model(model_type='multimodal')
-
-# Train
-history = trainer.train(train_loader, val_loader, model_type='multimodal')
-```
-
-### 3. Running the Dashboard
-
-```bash
-streamlit run dashboard/app.py
-```
-
-Navigate through the pages:
-- **Home**: Overview and quick start
-- **Data Overview**: Explore collected data
-- **Model Training**: Train models interactively
-- **Predictions**: Make and visualize predictions
-- **Interpretability**: View attention weights and model behavior
-- **Model Comparison**: Compare different models
-
-## Model Architecture
-
-The system uses a three-stream architecture:
-
-1. **Price Encoder**: LSTM network processing historical price sequences
-2. **Sentiment Encoder**: LSTM network processing news sentiment sequences
-3. **External Signal Encoder**: Lightweight encoder for weather data
-4. **Attention Fusion**: Dynamically weights modalities based on relevance
-5. **Prediction Head**: Final classification/regression layers
-
-## Evaluation
-
-The system is evaluated against:
-- Price-only LSTM baseline
-- Naïve multimodal (concatenation) baseline
-- Metrics: RMSE, MAE, Directional Accuracy
-
-## Results & Interpretability
-
-- **Attention Visualizations**: Heatmaps showing modality importance over time
-- **Ablation Studies**: Quantifying contribution of each modality
-- **Error Analysis**: Identifying failure modes and success patterns
-
-## Recent Improvements
-
-See [IMPROVEMENTS.md](IMPROVEMENTS.md) for detailed information about recent enhancements:
-
-- ✅ **Real Data Integration**: NewsAPI, OpenWeatherMap, and yfinance support
-- ✅ **FinBERT Sentiment Analysis**: Advanced financial sentiment model
-- ✅ **Comprehensive Logging System**: Detailed logging with file and console output
-- ✅ **Data Validation**: Automatic data quality checks and cleaning
-- ✅ **Enhanced Model Architecture**: Batch normalization and improved initialization
-- ✅ **Improved Error Handling**: Graceful fallbacks and error recovery
-
-**🚀 New: Real Data Integration!** See [API_SETUP_GUIDE.md](API_SETUP_GUIDE.md) to set up real APIs.
-
-## Future Extensions
-
-- Multi-day forecasting horizons
-- Probabilistic forecasting
-- Additional external signals (yield data, trade volumes)
-- Regional news source integration
-- Unit test suite expansion
-- Hyperparameter tuning automation
-- Model ensembling
-
-## License
-
-MIT
-
-## Author
-
-Developed as part of IITR Module E project.
-
+Developed as part of IITR Module E academic project.
