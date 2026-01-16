@@ -134,11 +134,12 @@ Key observations:
 
 ## 🚀 Running the Project Locally
 
+```bash
 git clone https://github.com/23241a6749/AI-IN-MARKET-TREND-ANALYSIS.git  
 cd AI-IN-MARKET-TREND-ANALYSIS  
 pip install -r requirements.txt  
 streamlit run app.py  
-
+```
 The application will be available at http://localhost:8501.
 
 ---
@@ -152,11 +153,6 @@ https://23241a6749-ai-in-market-trend-analysis-app-1ystbp.streamlit.app/
 
 ---
 
-## 🧪 AI Usage Disclosure
-
-AI tools (ChatGPT) were used during development for debugging support, concept clarification, and documentation assistance. All model design, implementation, training, evaluation, and deployment were performed and verified by the author.
-
----
 
 ## 📈 Future Improvements
 
