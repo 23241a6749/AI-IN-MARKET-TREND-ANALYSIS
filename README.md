@@ -11,7 +11,7 @@ https://github.com/23241a6749/AI-IN-MARKET-TREND-ANALYSIS
 
 ## 📌 Project Overview
 
-This project presents an end-to-end Multimodal Market Intelligence System designed to predict short-term agricultural commodity price movement (Up/Down) by jointly modeling multiple real-world data sources such as historical prices, news sentiment, and weather conditions. The system uses a multimodal deep learning architecture with attention-based fusion, allowing it to dynamically learn the importance of each data source while also providing interpretable predictions. The trained models are deployed as an interactive Streamlit web application.
+This project presents an end-to-end **Multimodal Market Intelligence System** designed to predict **short-term agricultural commodity price movement (Up/Down)** by jointly modeling multiple real-world data sources such as historical prices, news sentiment, and weather conditions. The system uses a **multimodal deep learning architecture with attention-based fusion**, enabling dynamic learning of signal importance while providing interpretable predictions. The trained models are deployed as an **interactive Streamlit web application**.
 
 ---
 
@@ -27,19 +27,19 @@ This project presents an end-to-end Multimodal Market Intelligence System design
 
 ## 🧠 Key Features
 
-- Price Movement Prediction: Next-day price direction (Up/Down)  
-- Multimodal Deep Learning: Price, news sentiment, and weather signals  
-- Attention-Based Fusion: Learns modality importance dynamically  
-- Baseline Comparisons: Price-only and naive multimodal models  
-- Evaluation Metrics: Accuracy, Precision, Recall, F1-score, Confusion Matrix  
-- Interpretability: Attention weight visualization and ablation studies  
-- Interactive Dashboard: Streamlit-based user interface  
-- Cloud Deployment: Streamlit Community Cloud  
+- 📈 Price Movement Prediction (Next-day Up/Down)  
+- 🧠 Multimodal Deep Learning (Price, News, Weather)  
+- 🔍 Attention-Based Fusion for interpretability  
+- 📊 Baseline Model Comparisons  
+- 📉 Evaluation Metrics (Accuracy, Precision, Recall, F1-score, Confusion Matrix)  
+- 🎨 Interactive Streamlit Dashboard  
+- 🚀 Cloud Deployment using Streamlit Community Cloud  
 
 ---
 
 ## 🏗️ Project Structure
 
+```text
 AI-IN-MARKET-TREND-ANALYSIS/
 │
 ├── app.py                     # Streamlit application (production-ready)
@@ -76,7 +76,7 @@ AI-IN-MARKET-TREND-ANALYSIS/
 │
 └── README.md
 
----
+```
 
 ## 🔄 System Workflow
 
